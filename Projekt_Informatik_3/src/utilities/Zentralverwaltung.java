@@ -51,21 +51,23 @@ public abstract class Zentralverwaltung {
 	 * 
 	 * @param iD
 	 */
-	public void incOrder(int iD) {
+	public boolean incOrder(int iD) {
 		Iterator<Command> it = programmablauf.iterator();
 		int index = 0;
 		if (it.next().getId() == iD) {
-		} else {
-			while (it.hasNext()) {
-				if (it.next().getId() == iD) {
-					Command temp = programmablauf.get(index - 1);
-					programmablauf.set(index - 1, programmablauf.get(index));
-					programmablauf.set(index, temp);
-				}
-
-				index++;
-			}
+			return false;
 		}
+		while (it.hasNext()) {
+			if (it.next().getId() == iD) {
+				Command temp = programmablauf.get(index - 1);
+				programmablauf.set(index - 1, programmablauf.get(index));
+				programmablauf.set(index, temp);
+			}
+
+			index++;
+		}
+		return true;
+
 	}
 
 	/**
