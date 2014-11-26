@@ -8,7 +8,7 @@ public abstract class Zentralverwaltung {
 	private Vector <Command> programmablauf= new Vector <Command>();
 
 	/**
-	 * Befüllt den ersten Vector mit allen Prototypobjekten
+	 * BefÃ¤llt den ersten Vector mit allen Prototypobjekten
 	 *
 	 */
 	public void createPrototypen(){
@@ -20,7 +20,7 @@ public abstract class Zentralverwaltung {
 		
 	}
 	/**
-	 * Fügt einen Schritt in den Programmablauf Vector ein
+	 * Fï¿½gt einen Schritt in den Programmablauf Vector ein
 	 * und erstellt diesen aus dem entsprechenden Prototypen
 	 * @param prototyp
 	 */
