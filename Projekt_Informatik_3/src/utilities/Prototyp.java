@@ -21,7 +21,23 @@ public class Prototyp {
 		this.nameCommand = nameCommand;
 	}
 
-	public Command createInstance(VerketteteListe list, String name) {
-		return list.getElement(name);
+	public Command createInstance(String name) {
+		Command temp = null;
+		if(name.equals("Direction")){
+			temp = new Direction();
+		}
+		if(name.equals("Gear")){
+			temp = new Gear();
+		}
+		if(name.equals("Goto")){
+			temp = new Goto();
+		}
+		if(name.equals("If")){
+			temp = new If();
+		}
+		if(name.equals("Assignment")){
+			temp = new Assignment();
+		}
+		return temp;
 	}
 }
