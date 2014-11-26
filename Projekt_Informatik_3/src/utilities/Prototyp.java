@@ -40,4 +40,26 @@ public class Prototyp {
 		}
 		return temp;
 	}
+	public Command createInstance(){
+		if (nameCommand==null)return null;
+		else{
+			Command temp = null;
+			if(nameCommand.equals("Direction")){
+				temp = new Direction();
+			}
+			if(nameCommand.equals("Gear")){
+				temp = new Gear();
+			}
+			if(nameCommand.equals("Goto")){
+				temp = new Goto();
+			}
+			if(nameCommand.equals("If")){
+				temp = new If();
+			}
+			if(nameCommand.equals("Assignment")){
+				temp = new Assignment();
+			}
+			return temp;
+		}
+	}
 }

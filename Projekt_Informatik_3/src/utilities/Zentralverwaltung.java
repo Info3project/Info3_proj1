@@ -1,6 +1,7 @@
 package utilities;
 
 import java.util.Vector;
+import java.util.Iterator;
 import command.*;
 
 public abstract class Zentralverwaltung {
@@ -25,7 +26,7 @@ public abstract class Zentralverwaltung {
 	 * @param prototyp
 	 */
 	public void addStep(Prototyp prototyp){
-		
+		programmablauf.addElement(prototyp.createInstance());
 	}
 	
 	/**
@@ -33,7 +34,12 @@ public abstract class Zentralverwaltung {
 	 * @param iD
 	 */
 	public void removeStep(int iD){
-		
+		Iterator <Command> it = programmablauf.iterator();
+		while(it.hasNext()){
+			if (it.next().getStepID()==iD){
+				it.remove();
+			}
+		}
 	}
 	
 	/**
@@ -41,8 +47,19 @@ public abstract class Zentralverwaltung {
 	 * @param iD
 	 */
 	public void incOrder(int iD){
-		
+		Iterator <Command> it = programmablauf.iterator();
+		int index=0;
+		while(it.hasNext()){
+			if (it.next().getStepID()==iD){
+				Command temp = programmablauf.get(index-1);
+				programmablauf.set(index-1, programmablauf.get(index));
+				programmablauf.set(index, temp);
+			}
+			
+			index++;
+		}
 	}
+	
 	
 	/**
 	 * schiebt den Befehl im Programmablauf einen Schritt nach hinten
