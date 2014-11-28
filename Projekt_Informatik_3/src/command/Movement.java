@@ -11,6 +11,10 @@ package command;
 public abstract class Movement extends Command
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int hwAdress;
 
 	public Movement()

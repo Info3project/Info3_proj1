@@ -10,6 +10,10 @@ package command;
 
 public class Goto extends Control
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int jumpAdress;
 
 	public Goto()

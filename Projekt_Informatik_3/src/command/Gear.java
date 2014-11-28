@@ -10,6 +10,10 @@ package command;
 
 public class Gear extends Movement
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int speed;
 	private int duration;
 

@@ -11,6 +11,10 @@ package command;
 public class Direction extends Movement
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int degree;
 
 	public Direction()

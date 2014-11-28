@@ -1,5 +1,8 @@
 package command;
 
+
+import java.io.Serializable;
+
 /**
  * Aufgabenblatt 1 Aufgabe 3 Bearbeitungsdauer k.A.
  * 
@@ -8,8 +11,12 @@ package command;
  *
  */
 
-public abstract class Command
+public abstract class Command implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private int id;
 	private int stepID;

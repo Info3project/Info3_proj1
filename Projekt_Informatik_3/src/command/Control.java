@@ -10,6 +10,11 @@ package command;
 
 public abstract class Control extends Command
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Control()
 	{
 	}

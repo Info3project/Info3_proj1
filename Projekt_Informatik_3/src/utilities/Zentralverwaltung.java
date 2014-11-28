@@ -1,5 +1,6 @@
 package utilities;
 
+import java.util.Properties;
 import java.util.Vector;
 import java.util.Iterator;
 
@@ -11,7 +12,7 @@ import command.*;
  *
  */
 
-public abstract class Zentralverwaltung {
+public abstract class Zentralverwaltung implements Interface {
 	private Vector<Prototyp> prototypen = new Vector<Prototyp>();
 	private Vector<Command> programmablauf = new Vector<Command>();
 
@@ -98,6 +99,25 @@ public abstract class Zentralverwaltung {
 		}
 		return true;
 
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Properties laden(String verzeichnis){
+		Properties daten=new Properties();
+		Serialisieren ser=new Serialisieren();
+		daten=ser.laden(verzeichnis);
+		prototypen=(Vector<Prototyp>)daten.get("prototypen");
+		programmablauf=(Vector<Command>)daten.get("commands");
+		
+		return null;
+	}
+	
+	public void speichern(Properties daten, String verzeichnis){
+		daten=new Properties();
+		daten.put("prototypen", prototypen);
+		daten.put("commands", programmablauf);
+		Serialisieren ser=new Serialisieren();
+		ser.speichern(daten, verzeichnis);
 	}
 
 }

@@ -10,6 +10,10 @@ package command;
 
 public class If extends Goto
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Assignment treshold;
 	private boolean reference;
 	public If()

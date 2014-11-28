@@ -10,6 +10,10 @@ package command;
 
 public class Assignment extends Control
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String operand;
 
 	public Assignment()
