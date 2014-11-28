@@ -5,6 +5,12 @@ import java.util.Iterator;
 
 import command.*;
 
+/**
+ * 
+ * @author Kopp / Haid
+ *
+ */
+
 public abstract class Zentralverwaltung {
 	private Vector<Prototyp> prototypen = new Vector<Prototyp>();
 	private Vector<Command> programmablauf = new Vector<Command>();

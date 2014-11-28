@@ -2,6 +2,11 @@ package utilities;
 
 import command.*;
 
+/**
+ * Aufgabenblatt 2
+ * @author Kopp / Haid
+ *
+ */
 public class Prototyp {
 
 	private String nameCommand = null;
