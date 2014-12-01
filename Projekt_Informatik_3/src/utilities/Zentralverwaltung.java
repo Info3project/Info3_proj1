@@ -12,7 +12,8 @@ import command.*;
  *
  */
 
-public abstract class Zentralverwaltung implements Interface {
+public class Zentralverwaltung implements Interface {
+	private static Zentralverwaltung instance = null;
 	private Vector<Prototyp> prototypen = new Vector<Prototyp>();
 	private Vector<Command> programmablauf = new Vector<Command>();
 
@@ -28,7 +29,18 @@ public abstract class Zentralverwaltung implements Interface {
 		prototypen.addElement(new Prototyp("Assignment"));
 
 	}
-
+	/**
+	 * Konstruktor der nicht aufgerufen werden darf, daher private
+	 */
+	private Zentralverwaltung(){}
+	
+	public static Zentralverwaltung getInstance(){
+		if (instance==null){
+			instance= new Zentralverwaltung();
+		}
+		return instance;
+	}
+	
 	/**
 	 * Fuegt einen Schritt in den Programmablauf Vector ein und erstellt diesen
 	 * aus dem entsprechenden Prototypen
@@ -119,5 +131,20 @@ public abstract class Zentralverwaltung implements Interface {
 		Serialisieren ser=new Serialisieren();
 		ser.speichern(daten, verzeichnis);
 	}
+
+	@Override
+	public String toString() {
+		String result="Zentralverwaltung: \nPrototypen: \n";
+		for (Prototyp prototyp : prototypen){
+			result=result+"   "+prototyp+"\n";
+		}
+		result=result+"Programmablauf: \n";    
+		for (Command command : programmablauf){
+			result=result+"   "+command+"\n";
+		}
+		return result;
+	}
+	
+	
 
 }

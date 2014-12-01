@@ -67,4 +67,11 @@ public class Prototyp {
 			return temp;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Prototyp [nameCommand=" + nameCommand + "]";
+	}
+	
+	
 }
