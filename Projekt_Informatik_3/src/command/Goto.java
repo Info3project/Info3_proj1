@@ -16,7 +16,7 @@ public class Goto extends Control {
 	private int jumpAdress;
 
 	public Goto(String name) {
-		super(name);
+		super(name, 3);
 	}
 
 	public Goto(String name, int id, int stepID) {
@@ -44,6 +44,11 @@ public class Goto extends Control {
 		if (jumpAdress != other.jumpAdress)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Goto       [jumpAdress=" + jumpAdress + " " + super.toString() + "]";
 	}
 
 }

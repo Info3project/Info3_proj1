@@ -18,7 +18,7 @@ public class Assignment extends Control
 
 	public Assignment()
 	{
-		super("Assignment");
+		super("Assignment", 4);
 	}
 
 	public Assignment(String name, int id, int stepID)
@@ -54,6 +54,11 @@ public class Assignment extends Control
 		} else if (!operand.equals(other.operand))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Assignment [operand=" + operand + " " + super.toString() + "]";
 	}
 
 	

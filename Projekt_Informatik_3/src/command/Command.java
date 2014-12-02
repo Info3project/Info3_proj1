@@ -21,9 +21,9 @@ public abstract class Command implements Serializable
 	private int id;
 	private int stepID;
 
-	public Command(String name)
+	public Command(String name, int id)
 	{
-		this(name, -1,-1);
+		this(name, id,-1);
 	}
 	
 	public Command(String name, int id, int stepID)
@@ -48,7 +48,7 @@ public abstract class Command implements Serializable
 		return id;
 	}
 
-	private void setId(int id)
+	protected void setId(int id)
 	{
 		this.id = id;
 	}

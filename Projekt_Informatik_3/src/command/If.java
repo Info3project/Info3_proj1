@@ -18,6 +18,7 @@ public class If extends Goto {
 
 	public If() {
 		super("If");
+		this.setId(5);
 	}
 
 	public If(Assignment treshold, boolean reference, String name, int id,
@@ -61,6 +62,11 @@ public class If extends Goto {
 		} else if (!treshold.equals(other.treshold))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "If         [treshold=" + treshold + ", reference=" + reference + " " + super.toString() + "]";
 	}
 
 }

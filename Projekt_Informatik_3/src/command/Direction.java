@@ -19,7 +19,7 @@ public class Direction extends Movement
 
 	public Direction()
 	{
-		super("Direction");
+		super("Direction", 1);
 	}
 
 	public Direction(int degree, int hwAdress, String name, int id, int stepID)
@@ -36,6 +36,11 @@ public class Direction extends Movement
 	public void setDegree(int degree)
 	{
 		this.degree = degree;
+	}
+
+	@Override
+	public String toString() {
+		return "Direction  [degree=" + degree + " " + super.toString() + "]";
 	}
 
 }

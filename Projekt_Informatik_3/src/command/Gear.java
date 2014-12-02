@@ -19,7 +19,7 @@ public class Gear extends Movement
 
 	public Gear()
 	{
-		super("Gear");
+		super("Gear", 2);
 	}
 
 	public Gear(int speed, int duration, int hwAdress, String name, int id,
@@ -48,6 +48,11 @@ public class Gear extends Movement
 	public void setDuration(int duration)
 	{
 		this.duration = duration;
+	}
+
+	@Override
+	public String toString() {
+		return "Gear       [speed=" + speed + ", duration=" + duration + " " + super.toString() +  "]";
 	}
 
 }

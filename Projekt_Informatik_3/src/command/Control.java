@@ -15,14 +15,19 @@ public abstract class Control extends Command
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Control(String name)
+	public Control(String name, int id)
 	{
-		super(name);
+		super(name, id);
 	}
 
 	public Control(String name, int id, int stepID)
 	{
 		super(name, id, stepID);
+	}
+
+	@Override
+	public String toString() {
+		return "" + super.toString();
 	}
 
 }

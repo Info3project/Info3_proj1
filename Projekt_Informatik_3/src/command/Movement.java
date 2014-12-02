@@ -17,9 +17,9 @@ public abstract class Movement extends Command
 	private static final long serialVersionUID = 1L;
 	private int hwAdress;
 
-	public Movement(String name)
+	public Movement(String name, int id)
 	{
-		super(name);
+		super(name, id);
 	}
 
 	public Movement(int hwAdress, String name, int id, int stepID)
@@ -56,8 +56,7 @@ public abstract class Movement extends Command
 	@Override
 	public String toString()
 	{
-		return "Movement [hwAdress=" + hwAdress + ", toString()="
-				+ super.toString() + "]";
+		return "Movement [hwAdress=" + hwAdress	+" "+ super.toString() + "]";
 	}
 	
 	
