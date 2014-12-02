@@ -18,7 +18,7 @@ public class Zentralverwaltung implements Interface {
 	private Vector<Command> programmablauf = new Vector<Command>();
 
 	/**
-	 * Befaellt den ersten Vector mit allen Prototypobjekten
+	 * Befuellt den ersten Vector mit allen Prototypobjekten
 	 *
 	 */
 	public void createPrototypen() {
@@ -29,18 +29,20 @@ public class Zentralverwaltung implements Interface {
 		prototypen.addElement(new Prototyp("Assignment"));
 
 	}
+
 	/**
 	 * Konstruktor der nicht aufgerufen werden darf, daher private
 	 */
-	private Zentralverwaltung(){}
-	
-	public static Zentralverwaltung getInstance(){
-		if (instance==null){
-			instance= new Zentralverwaltung();
+	private Zentralverwaltung() {
+	}
+
+	public static Zentralverwaltung getInstance() {
+		if (instance == null) {
+			instance = new Zentralverwaltung();
 		}
 		return instance;
 	}
-	
+
 	/**
 	 * Fuegt einen Schritt in den Programmablauf Vector ein und erstellt diesen
 	 * aus dem entsprechenden Prototypen
@@ -105,46 +107,44 @@ public class Zentralverwaltung implements Interface {
 			}
 
 			index++;
-			if((it.hasNext() != true) && (it.next().getId() == iD)){
+			if ((it.hasNext() != true) && (it.next().getId() == iD)) {
 				return false;
 			}
 		}
 		return true;
 
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public Properties laden(String verzeichnis){
-		Properties daten=new Properties();
-		Serialisieren ser=new Serialisieren();
-		daten=ser.laden(verzeichnis);
-		prototypen=(Vector<Prototyp>)daten.get("prototypen");
-		programmablauf=(Vector<Command>)daten.get("commands");
-		
+	public Properties laden(String verzeichnis) {
+		Properties daten = new Properties();
+		Serialisieren ser = new Serialisieren();
+		daten = ser.laden(verzeichnis);
+		prototypen = (Vector<Prototyp>) daten.get("prototypen");
+		programmablauf = (Vector<Command>) daten.get("commands");
+
 		return null;
 	}
-	
-	public void speichern(Properties daten, String verzeichnis){
-		daten=new Properties();
+
+	public void speichern(Properties daten, String verzeichnis) {
+		daten = new Properties();
 		daten.put("prototypen", prototypen);
 		daten.put("commands", programmablauf);
-		Serialisieren ser=new Serialisieren();
+		Serialisieren ser = new Serialisieren();
 		ser.speichern(daten, verzeichnis);
 	}
 
 	@Override
 	public String toString() {
-		String result="Zentralverwaltung: \nPrototypen: \n";
-		for (Prototyp prototyp : prototypen){
-			result=result+"   "+prototyp+"\n";
+		String result = "Zentralverwaltung: \nPrototypen: \n";
+		for (Prototyp prototyp : prototypen) {
+			result = result + "   " + prototyp + "\n";
 		}
-		result=result+"Programmablauf: \n";    
-		for (Command command : programmablauf){
-			result=result+"   "+command+"\n";
+		result = result + "Programmablauf: \n";
+		for (Command command : programmablauf) {
+			result = result + "   " + command + "\n";
 		}
 		return result;
 	}
-	
-	
 
 }

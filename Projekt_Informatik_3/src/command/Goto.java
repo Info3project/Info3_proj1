@@ -8,37 +8,32 @@ package command;
  *
  */
 
-public class Goto extends Control
-{
+public class Goto extends Control {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private int jumpAdress;
 
-	public Goto()
-	{
+	public Goto(String name) {
+		super(name);
 	}
 
-	public Goto(String name, int id, int stepID)
-	{
+	public Goto(String name, int id, int stepID) {
 		super(name, id, stepID);
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getJumpAdress()
-	{
+	public int getJumpAdress() {
 		return jumpAdress;
 	}
 
-	public void setJumpAdress(int jumpAdress)
-	{
+	public void setJumpAdress(int jumpAdress) {
 		this.jumpAdress = jumpAdress;
 	}
 
 	@Override
-	public boolean equals(Object obj)
-	{
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!super.equals(obj))

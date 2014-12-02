@@ -8,43 +8,44 @@ package command;
  *
  */
 
-public class If extends Goto
-{
+public class If extends Goto {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private Assignment treshold;
 	private boolean reference;
-	public If()
-	{
+
+	public If() {
+		super("If");
 	}
-	public If(Assignment treshold, boolean reference, String name, int id, int stepID)
-	{
+
+	public If(Assignment treshold, boolean reference, String name, int id,
+			int stepID) {
 		super(name, id, stepID);
 		// TODO Auto-generated constructor stub
 		this.treshold = treshold;
 		this.reference = reference;
 	}
-	public Assignment getTreshold()
-	{
+
+	public Assignment getTreshold() {
 		return treshold;
 	}
-	public void setTreshold(Assignment treshold)
-	{
+
+	public void setTreshold(Assignment treshold) {
 		this.treshold = treshold;
 	}
-	public boolean isReference()
-	{
+
+	public boolean isReference() {
 		return reference;
 	}
-	public void setReference(boolean reference)
-	{
+
+	public void setReference(boolean reference) {
 		this.reference = reference;
 	}
+
 	@Override
-	public boolean equals(Object obj)
-	{
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (!super.equals(obj))
@@ -54,14 +55,12 @@ public class If extends Goto
 		If other = (If) obj;
 		if (reference != other.reference)
 			return false;
-		if (treshold == null)
-		{
+		if (treshold == null) {
 			if (other.treshold != null)
 				return false;
 		} else if (!treshold.equals(other.treshold))
 			return false;
 		return true;
 	}
-	
-	
+
 }

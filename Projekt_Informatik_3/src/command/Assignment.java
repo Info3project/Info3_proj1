@@ -18,6 +18,7 @@ public class Assignment extends Control
 
 	public Assignment()
 	{
+		super("Assignment");
 	}
 
 	public Assignment(String name, int id, int stepID)

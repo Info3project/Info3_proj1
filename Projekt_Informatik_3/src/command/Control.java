@@ -15,8 +15,9 @@ public abstract class Control extends Command
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Control()
+	public Control(String name)
 	{
+		super(name);
 	}
 
 	public Control(String name, int id, int stepID)

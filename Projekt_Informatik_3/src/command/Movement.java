@@ -17,8 +17,9 @@ public abstract class Movement extends Command
 	private static final long serialVersionUID = 1L;
 	private int hwAdress;
 
-	public Movement()
+	public Movement(String name)
 	{
+		super(name);
 	}
 
 	public Movement(int hwAdress, String name, int id, int stepID)

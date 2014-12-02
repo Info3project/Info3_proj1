@@ -10,8 +10,10 @@ public class Test2 {
 		System.out.println("*****Prototypen erstellt: " + zv);
 		zv.addStep(new Prototyp("If"));
 		zv.addStep(new Prototyp("Goto"));
-		System.out.println("*****commands hinzugefügt: "+ zv);
-
+		zv.addStep(new Prototyp("Assignment"));
+		zv.addStep(new Prototyp("Gear"));
+		System.out.println("*****commands hinzugefügt: " + zv);
+		
 	}
 
 }

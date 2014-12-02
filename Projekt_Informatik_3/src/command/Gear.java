@@ -19,6 +19,7 @@ public class Gear extends Movement
 
 	public Gear()
 	{
+		super("Gear");
 	}
 
 	public Gear(int speed, int duration, int hwAdress, String name, int id,

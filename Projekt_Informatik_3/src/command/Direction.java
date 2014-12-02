@@ -19,6 +19,7 @@ public class Direction extends Movement
 
 	public Direction()
 	{
+		super("Direction");
 	}
 
 	public Direction(int degree, int hwAdress, String name, int id, int stepID)

@@ -4,6 +4,7 @@ import command.*;
 
 /**
  * Aufgabenblatt 2
+ * 
  * @author Kopp / Haid
  *
  */
@@ -28,40 +29,42 @@ public class Prototyp {
 
 	public Command createInstance(String name) {
 		Command temp = null;
-		if(name.equals("Direction")){
+		if (name.equals("Direction")) {
 			temp = new Direction();
 		}
-		if(name.equals("Gear")){
+		if (name.equals("Gear")) {
 			temp = new Gear();
 		}
-		if(name.equals("Goto")){
-			temp = new Goto();
+		if (name.equals("Goto")) {
+			temp = new Goto("Goto");
 		}
-		if(name.equals("If")){
+		if (name.equals("If")) {
 			temp = new If();
 		}
-		if(name.equals("Assignment")){
+		if (name.equals("Assignment")) {
 			temp = new Assignment();
 		}
 		return temp;
 	}
-	public Command createInstance(){
-		if (nameCommand==null)return null;
-		else{
+
+	public Command createInstance() {
+		if (nameCommand == null)
+			return null;
+		else {
 			Command temp = null;
-			if(nameCommand.equals("Direction")){
+			if (nameCommand.equals("Direction")) {
 				temp = new Direction();
 			}
-			if(nameCommand.equals("Gear")){
+			if (nameCommand.equals("Gear")) {
 				temp = new Gear();
 			}
-			if(nameCommand.equals("Goto")){
-				temp = new Goto();
+			if (nameCommand.equals("Goto")) {
+				temp = new Goto("Goto");
 			}
-			if(nameCommand.equals("If")){
+			if (nameCommand.equals("If")) {
 				temp = new If();
 			}
-			if(nameCommand.equals("Assignment")){
+			if (nameCommand.equals("Assignment")) {
 				temp = new Assignment();
 			}
 			return temp;
@@ -72,6 +75,5 @@ public class Prototyp {
 	public String toString() {
 		return "Prototyp [nameCommand=" + nameCommand + "]";
 	}
-	
-	
+
 }

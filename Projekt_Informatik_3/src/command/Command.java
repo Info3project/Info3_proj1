@@ -21,11 +21,11 @@ public abstract class Command implements Serializable
 	private int id;
 	private int stepID;
 
-	public Command()
+	public Command(String name)
 	{
-		this(null, -1,-1);
+		this(name, -1,-1);
 	}
-
+	
 	public Command(String name, int id, int stepID)
 	{
 		this.setName(name);
