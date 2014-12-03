@@ -13,7 +13,7 @@ public class Test2 {
 		zv.addStep(new Prototyp("Assignment"));
 		zv.addStep(new Prototyp("Gear"));
 		zv.addStep(new Prototyp("Direction"));
-		System.out.println("*****commands hinzugefügt: " + zv);
+		System.out.println("*****commands hinzugefuegt: " + zv);
 		if(zv.incOrder(3)){
 			System.out.println("Goto eins nach oben geschoben");
 		}
