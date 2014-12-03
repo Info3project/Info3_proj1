@@ -21,10 +21,13 @@ public class VerwaltungView extends JFrame {
 		setLayout(new GridLayout(10, 10));
 		JButton b1 = new JButton(("add"));
 		JButton b2 = new JButton(("remove"));
+		JButton b3 = new JButton(("save"));
 		b1.addActionListener(null);
 		b2.addActionListener(null);
+		b3.addActionListener(null);
 		add(b1);
 		add(b2);
+		add(b3);
 	}
 
 	public static void main(String[] args) {
