@@ -3,6 +3,8 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+import utilities.*;
+import command.*;
 
 /**
  * @author Haid/Kopp
