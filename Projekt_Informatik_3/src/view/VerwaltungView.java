@@ -2,7 +2,10 @@ package view;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+
 import java.awt.GridLayout;
+import java.awt.image.ImageObserver;
+
 import utilities.*;
 import command.*;
 
@@ -16,8 +19,12 @@ public class VerwaltungView extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public VerwaltungView() {
+	private Zentralverwaltung zw;
+	
+	
+	public VerwaltungView(Zentralverwaltung zw) {
 		super("Verwaltung");
+		this.zw = zw;
 		setLayout(new GridLayout(10, 10));
 		JButton b1 = new JButton(("add"));
 		JButton b2 = new JButton(("remove"));
@@ -31,10 +38,10 @@ public class VerwaltungView extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		VerwaltungView vv = new VerwaltungView();
+		VerwaltungView vv = new VerwaltungView(null);
 		vv.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		vv.pack();
 		vv.setVisible(true);
-		
+
 	}
 }
