@@ -18,6 +18,14 @@ public class VerwaltungView extends JFrame {
 
 	public VerwaltungView() {
 		super("Verwaltung");
-		setLayout(new GridLayout(10,10));
+		setLayout(new GridLayout(10, 10));
+	}
+
+	public static void main(String[] args) {
+		VerwaltungView vv = new VerwaltungView();
+		vv.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		vv.pack();
+		vv.setVisible(true);
+		
 	}
 }
