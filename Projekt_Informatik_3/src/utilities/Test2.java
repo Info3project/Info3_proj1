@@ -14,12 +14,11 @@ public class Test2 {
 		zv.addStep(new Prototyp("Gear"));
 		zv.addStep(new Prototyp("Direction"));
 		System.out.println("*****commands hinzugefuegt: " + zv);
-		if(zv.incOrder(3)){
-			System.out.println("Goto eins nach oben geschoben");
-		}
-		if(zv.decOrder(2)){
-			System.out.println("Gear eins nach unten geschoben");
-		}
+		zv.incOrder(3);	
+		System.out.println("Goto eins nach oben geschoben: "+ zv);
+		zv.decOrder(5);
+		System.out.println("Gear eins nach unten geschoben: "+ zv);
+		
 		zv.removeStep(4);
 		System.out.println("*****Assignment geloescht: " + zv);
 	}

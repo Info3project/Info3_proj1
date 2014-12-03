@@ -74,7 +74,7 @@ public class Zentralverwaltung implements Interface {
 	 */
 	public boolean incOrder(int iD) {
 		Iterator<Command> it = programmablauf.iterator();
-		int index = 0;
+		int index = 1;
 		if (it.next().getId() == iD) {
 			return false;
 		}
@@ -104,6 +104,8 @@ public class Zentralverwaltung implements Interface {
 				Command temp = programmablauf.get(index + 1);
 				programmablauf.set(index + 1, programmablauf.get(index));
 				programmablauf.set(index, temp);
+				index++;
+				return true;
 			}
 
 			index++;
@@ -111,7 +113,7 @@ public class Zentralverwaltung implements Interface {
 				return false;
 			}
 		}
-		return true;
+		return false;
 
 	}
 
