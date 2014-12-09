@@ -130,8 +130,8 @@ public class Zentralverwaltung implements Interface {
 
 	public void speichern(Properties daten, String verzeichnis) {
 		daten = new Properties();
-		//daten.put("prototypen", prototypen);
 		daten.put("commands", programmablauf);
+		//daten.put("prototypen", prototypen);
 		Serialisieren ser = new Serialisieren();
 		ser.speichern(daten, verzeichnis);
 	}
