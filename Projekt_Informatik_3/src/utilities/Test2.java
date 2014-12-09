@@ -2,6 +2,7 @@ package utilities;
 
 import java.util.Properties;
 
+@SuppressWarnings("unused")
 public class Test2 {
 
 	public static void main(String[] args) {

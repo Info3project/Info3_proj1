@@ -1,5 +1,7 @@
 package utilities;
 
+import java.io.Serializable;
+
 import command.*;
 
 /**
@@ -8,8 +10,12 @@ import command.*;
  * @author Kopp / Haid
  *
  */
-public class Prototyp {
+public class Prototyp implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nameCommand = null;
 
 	public Prototyp() {
