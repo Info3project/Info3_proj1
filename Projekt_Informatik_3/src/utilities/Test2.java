@@ -23,10 +23,9 @@ public class Test2 {
 		
 		zv.removeStep(4);
 		System.out.println("*****Assignment geloescht: " + zv);
-		Properties prop = null;
-		zv.speichern(prop, "Speicher");*/
+		zv.speichern(null, "Speicher");*/
 		zv.laden("Speicher");
-		System.out.println("*****Assignment geloescht: " + zv);
+		System.out.println("*****Lock and Load: " + zv);
 		
 	}
 
