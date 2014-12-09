@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.7" icons="true" automaticImage="JPEG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="command.Assignment" project="Projekt_Informatik_3" 
+    file="/Projekt_Informatik_3/src/command/Assignment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="214" width="173" x="407" y="1259"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="command.If" project="Projekt_Informatik_3" 
+    file="/Projekt_Informatik_3/src/command/If.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="250" width="232" x="317" y="969"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="command.Command" project="Projekt_Informatik_3" 
+    file="/Projekt_Informatik_3/src/command/Command.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="321" width="163" x="290" y="65"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="command.Gear" project="Projekt_Informatik_3" 
+    file="/Projekt_Informatik_3/src/command/Gear.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="250" width="186" x="-72" y="679"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="command.Direction" project="Projekt_Informatik_3" 
+    file="/Projekt_Informatik_3/src/command/Direction.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="191" x="154" y="679"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="command.Movement" project="Projekt_Informatik_3" 
+    file="/Projekt_Informatik_3/src/command/Movement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="213" width="181" x="154" y="426"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="command.Control" project="Projekt_Informatik_3" 
+    file="/Projekt_Informatik_3/src/command/Control.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="141" width="153" x="427" y="426"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="command.Goto" project="Projekt_Informatik_3" 
+    file="/Projekt_Informatik_3/src/command/Goto.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="214" width="164" x="385" y="679"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="utilities.Zentralverwaltung" project="Projekt_Informatik_3" 
+    file="/Projekt_Informatik_3/src/utilities/Zentralverwaltung.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="250" width="213" x="739" y="-8"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="utilities.Prototyp" project="Projekt_Informatik_3" 
+    file="/Projekt_Informatik_3/src/utilities/Prototyp.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="232" width="216" x="739" y="292"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="11" language="java" name="utilities.Interface" project="Projekt_Informatik_3" 
+    file="/Projekt_Informatik_3/src/utilities/Interface.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="213" x="995" y="292"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="12" language="java" name="utilities.Serialisieren" project="Projekt_Informatik_3" 
+    file="/Projekt_Informatik_3/src/utilities/Serialisieren.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="214" width="213" x="1002" y="-8"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="utilities.Test2" project="Projekt_Informatik_3" 
+    file="/Projekt_Informatik_3/src/utilities/Test2.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="130" x="1255" y="-8"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="14">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="15" name="prototypen"/>      
+      <multiplicity id="16" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="17">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="18">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="19">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="20" name="instance"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="22">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <generalization id="23">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <association id="24">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="25" name="treshold"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="27">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="28">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="29">    
+    <bendpoint x="579" y="969"/>    
+    <bendpoint x="579" y="679"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <association id="30">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="31" name="programmablauf"/>      
+      <multiplicity id="32" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="33">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <realization id="34">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
