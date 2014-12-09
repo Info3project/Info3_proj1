@@ -1,11 +1,13 @@
 package utilities;
 
+import java.util.Properties;
+
 public class Test2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Zentralverwaltung zv = Zentralverwaltung.getInstance();
-		System.out.println("*****Zentralverwaltung erstellt:" + zv);
+		/*System.out.println("*****Zentralverwaltung erstellt:" + zv);
 		zv.createPrototypen();
 		System.out.println("*****Prototypen erstellt: " + zv);
 		zv.addStep(new Prototyp("If"));
@@ -21,6 +23,11 @@ public class Test2 {
 		
 		zv.removeStep(4);
 		System.out.println("*****Assignment geloescht: " + zv);
+		Properties prop = null;
+		zv.speichern(prop, "Speicher");*/
+		zv.laden("Speicher");
+		System.out.println("*****Assignment geloescht: " + zv);
+		
 	}
 
 }

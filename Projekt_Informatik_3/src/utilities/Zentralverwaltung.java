@@ -122,7 +122,7 @@ public class Zentralverwaltung implements Interface {
 		Properties daten = new Properties();
 		Serialisieren ser = new Serialisieren();
 		daten = ser.laden(verzeichnis);
-		prototypen = (Vector<Prototyp>) daten.get("prototypen");
+		//prototypen = (Vector<Prototyp>) daten.get("prototypen");
 		programmablauf = (Vector<Command>) daten.get("commands");
 
 		return null;
@@ -130,7 +130,7 @@ public class Zentralverwaltung implements Interface {
 
 	public void speichern(Properties daten, String verzeichnis) {
 		daten = new Properties();
-		daten.put("prototypen", prototypen);
+		//daten.put("prototypen", prototypen);
 		daten.put("commands", programmablauf);
 		Serialisieren ser = new Serialisieren();
 		ser.speichern(daten, verzeichnis);
