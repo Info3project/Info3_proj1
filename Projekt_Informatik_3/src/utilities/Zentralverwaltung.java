@@ -100,8 +100,9 @@ public class Zentralverwaltung implements Interface {
 		Iterator<Command> it = programmablauf.iterator();
 		int index = 0;
 		while (it.hasNext()) {
-			
-			if (it.next().getId() == iD) {
+			Command iterator=it.next();
+			index++;
+			if (iterator.getId() == iD) {
 				Command temp = programmablauf.get(index + 1);
 				programmablauf.set(index + 1, programmablauf.get(index));
 				programmablauf.set(index, temp);
@@ -109,8 +110,8 @@ public class Zentralverwaltung implements Interface {
 				return true;
 			}
 
-			index++;
-			if(programmablauf.lastElement().equals(it.next())){
+			
+			if(programmablauf.lastElement().equals(iterator)){
 				return false;
 			}
 		}
