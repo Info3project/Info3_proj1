@@ -109,8 +109,6 @@ public class Zentralverwaltung implements Interface {
 				index++;
 				return true;
 			}
-
-			
 			if(programmablauf.lastElement().equals(iterator)){
 				return false;
 			}
