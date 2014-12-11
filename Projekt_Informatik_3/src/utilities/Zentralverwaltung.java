@@ -101,15 +101,16 @@ public class Zentralverwaltung implements Interface {
 		int index = 0;
 		while (it.hasNext()) {
 			Command iterator = it.next();
-			if (iterator.getId() == iD) {
-				Command temp = programmablauf.get(index + 1);
-				programmablauf.set(index + 1, programmablauf.get(index));
-				programmablauf.set(index, temp);
-				
-				return true;
-			}
-			if(programmablauf.lastElement().equals(iterator)){
+			if (programmablauf.lastElement().equals(iterator)) {
 				return false;
+			} else {
+				if (iterator.getId() == iD) {
+					Command temp = programmablauf.get(index + 1);
+					programmablauf.set(index + 1, programmablauf.get(index));
+					programmablauf.set(index, temp);
+
+					return true;
+				}
 			}
 			index++;
 		}
