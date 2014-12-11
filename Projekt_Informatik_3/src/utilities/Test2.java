@@ -19,7 +19,7 @@ public class Test2 {
 		System.out.println("*****commands hinzugefuegt: " + zv);
 		zv.incOrder(3);	
 		System.out.println("Goto eins nach oben geschoben: "+ zv);
-		System.out.println(zv.decOrder(3));
+		System.out.println(zv.decOrder(2));
 		System.out.println("Goto eins nach unten geschoben: "+ zv);
 //		zv.removeStep(4);
 //		System.out.println("*****Assignment geloescht: " + zv);
