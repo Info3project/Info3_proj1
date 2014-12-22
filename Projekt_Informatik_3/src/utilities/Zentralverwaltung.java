@@ -14,6 +14,7 @@ import command.*;
 
 public class Zentralverwaltung implements Interface {
 	private static Zentralverwaltung instance = null;
+	private static int step=0;
 	private Vector<Prototyp> prototypen = new Vector<Prototyp>();
 	private Vector<Command> programmablauf = new Vector<Command>();
 
@@ -50,7 +51,10 @@ public class Zentralverwaltung implements Interface {
 	 * @param prototyp
 	 */
 	public void addStep(Prototyp prototyp) {
-		programmablauf.addElement(prototyp.createInstance());
+		Command temp =prototyp.createInstance();
+		temp.setStepID(step);
+		step++;
+		programmablauf.addElement(temp);
 	}
 
 	/**
@@ -58,10 +62,10 @@ public class Zentralverwaltung implements Interface {
 	 * 
 	 * @param iD
 	 */
-	public void removeStep(int iD) {
+	public void removeStep(int stepID) {
 		Iterator<Command> it = programmablauf.iterator();
 		while (it.hasNext()) {
-			if (it.next().getId() == iD) {
+			if (it.next().getStepID() == stepID) {
 				it.remove();
 			}
 		}
@@ -72,14 +76,14 @@ public class Zentralverwaltung implements Interface {
 	 * 
 	 * @param iD
 	 */
-	public boolean incOrder(int iD) {
+	public boolean incOrder(int stepID) {
 		Iterator<Command> it = programmablauf.iterator();
 		int index = 1;
-		if (it.next().getId() == iD) {
+		if (it.next().getStepID() == stepID) {
 			return false;
 		}
 		while (it.hasNext()) {
-			if (it.next().getId() == iD) {
+			if (it.next().getStepID() == stepID) {
 				Command temp = programmablauf.get(index - 1);
 				programmablauf.set(index - 1, programmablauf.get(index));
 				programmablauf.set(index, temp);
@@ -96,7 +100,7 @@ public class Zentralverwaltung implements Interface {
 	 * 
 	 * @param iD
 	 */
-	public boolean decOrder(int iD) {
+	public boolean decOrder(int stepID) {
 		Iterator<Command> it = programmablauf.iterator();
 		int index = 0;
 		while (it.hasNext()) {
@@ -104,7 +108,7 @@ public class Zentralverwaltung implements Interface {
 			if (programmablauf.lastElement().equals(iterator)) {
 				return false;
 			} else {
-				if (iterator.getId() == iD) {
+				if (iterator.getStepID() == stepID) {
 					Command temp = programmablauf.get(index + 1);
 					programmablauf.set(index + 1, programmablauf.get(index));
 					programmablauf.set(index, temp);
