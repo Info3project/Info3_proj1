@@ -30,6 +30,9 @@ public class Zentralverwaltung implements Interface {
 		prototypen.addElement(new Prototyp("Assignment"));
 
 	}
+	public Vector<Prototyp> getPrototypes(){
+		return prototypen;
+	}
 
 	/**
 	 * Konstruktor der nicht aufgerufen werden darf, daher private
