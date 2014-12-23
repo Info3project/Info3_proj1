@@ -43,6 +43,7 @@ public class Zentralverwaltung implements Interface {
 	public static Zentralverwaltung getInstance() {
 		if (instance == null) {
 			instance = new Zentralverwaltung();
+			instance.createPrototypen();
 		}
 		return instance;
 	}
