@@ -33,25 +33,24 @@ public class VerwaltungView extends JFrame {
 		total.setLayout(gb);
 
 		/**
-		 * create JPanel left with Prototype List and add button
+		 * create JPanel left
 		 */
 		JPanel left = new JPanel(new BorderLayout());
 		JPanel leftNorth = new JPanel();
 		JPanel leftSouth = new JPanel(new BorderLayout());
 		/**
-		 * create Jpanel right with config editor
+		 * create JPanel right
 		 */
 		JPanel right = new JPanel(new BorderLayout());
 		JPanel rightSouth = new JPanel(new BorderLayout());
 		
 		/**
-		 * create Jpanel bottom with text output
+		 * create JPanel bottom
 		 */
 		JPanel bottom = new JPanel();
 		
 		/**
-		 * create JPanel center with Programmablauf List and buttons remove, up,
-		 * down start
+		 * create JPanel center
 		 */
 		JPanel center = new JPanel(new BorderLayout());
 		JPanel centerCenter = new JPanel(new BorderLayout());
@@ -83,7 +82,7 @@ public class VerwaltungView extends JFrame {
 		
 		
 		/**
-		 * set Layout left side
+		 * add Buttons, JPanels and set Layout left side
 		 */
 		left.setComponentOrientation(java.awt.ComponentOrientation.RIGHT_TO_LEFT);
 		left.add(new JScrollPane(prototypList), BorderLayout.CENTER);
@@ -94,7 +93,7 @@ public class VerwaltungView extends JFrame {
 		left.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		/**
-		 * set Layout of the center buttons
+		 * add Buttons, JPanels and set Layout of the center buttons
 		 */
 		center.add(centerSouth, BorderLayout.SOUTH);
 		centerSouth.add(centerSouthLeft);
@@ -107,7 +106,7 @@ public class VerwaltungView extends JFrame {
 		center.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		/**
-		 * set Layout right side
+		 * add Buttons, JPanels and set Layout right side
 		 */
 		right.add(rightSouth, BorderLayout.SOUTH);
 		rightSouth.add(save, BorderLayout.EAST);
