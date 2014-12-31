@@ -79,7 +79,7 @@ public class Prototyp implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Prototyp [nameCommand=" + nameCommand + "]";
+		return "" + nameCommand;
 	}
 
 }
