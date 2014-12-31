@@ -32,58 +32,63 @@ public class VerwaltungView extends JFrame {
 		c.fill = GridBagConstraints.BOTH;
 		total.setLayout(gb);
 
-		// ********************* create JPanel left with Prototype List and add
-		// button
+		/**
+		 * create JPanel left with Prototype List and add button
+		 */
 		JPanel left = new JPanel(new BorderLayout());
 		JPanel leftNorth = new JPanel();
 		JPanel leftSouth = new JPanel(new BorderLayout());
 		JButton add = new JButton("add");
 		JList<Prototyp> prototypList = new JList<Prototyp>(zw.getPrototypes());
 		left.setComponentOrientation(java.awt.ComponentOrientation.RIGHT_TO_LEFT);
-				
-		left.add(new JScrollPane(prototypList),
-				BorderLayout.CENTER);
+
+		left.add(new JScrollPane(prototypList), BorderLayout.CENTER);
 		left.add(leftSouth, BorderLayout.PAGE_END);
 		left.add(leftNorth, BorderLayout.PAGE_START);
 		leftNorth.add(new JTextArea("Prototypes"));
 		leftSouth.add(add, BorderLayout.EAST);
-		// **************** ActionListener, creates the selected Prototyp
+		/**
+		 * **************** ActionListener, creates the selected Prototyp
+		 */
 		add.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				zw.addStep((Prototyp) prototypList.getSelectedValuesList());
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 		left.setBorder(BorderFactory.createLineBorder(Color.black));
 
-		
-		// ***************** create JPanel center with Programmablauf List and
-		// buttons remove, up, down start
+		/**
+		 * create JPanel center with Programmablauf List and buttons remove, up,
+		 * down start
+		 */
 		JPanel center = new JPanel(new BorderLayout());
 		JPanel centerCenter = new JPanel(new BorderLayout());
 		JPanel centerSouth = new JPanel(new GridLayout(1, 2));
 		JPanel centerSouthLeft = new JPanel(new BorderLayout());
 		JPanel centerSouthRight = new JPanel(new GridLayout(1, 3));
-		
-		
-		// ***************** create List mid
+
+		/**
+		 * create List mid
+		 */
 		final DefaultListModel commands = new DefaultListModel<Command>();
 		JList commandList = new JList(commands);
 		JScrollPane scrollPane1 = new JScrollPane(commandList);
-		
-		
-		
-		// ***************** create JButtons
+
+		/**
+		 * create JButtons
+		 */
 		JButton remove = new JButton("Remove");
 		JButton up = new JButton("Up");
 		JButton down = new JButton("Down");
 		JButton start = new JButton("Start");
-		
-		
-		// ***************** add Actionlisteners
+
+		/**
+		 *  add Actionlisteners
+		 */
 		remove.addActionListener(new ActionListener() {
 
 			@Override
@@ -100,9 +105,10 @@ public class VerwaltungView extends JFrame {
 
 			}
 		});
-		
-		
-		// ***************** set position of the buttons
+
+		/**
+		 * set position of the buttons
+		 */
 		center.add(centerSouth, BorderLayout.SOUTH);
 		centerSouth.add(centerSouthLeft);
 		centerSouth.add(centerSouthRight);
@@ -113,8 +119,9 @@ public class VerwaltungView extends JFrame {
 		centerCenter.add(scrollPane1, BorderLayout.CENTER);
 		center.setBorder(BorderFactory.createLineBorder(Color.black));
 
-		
-		// *************** create Jpanel right with config editor
+		/**
+		 *  create Jpanel right with config editor
+		 */
 		JPanel right = new JPanel(new BorderLayout());
 		JPanel rightSouth = new JPanel(new BorderLayout());
 		JButton save = new JButton("Save");
@@ -122,7 +129,9 @@ public class VerwaltungView extends JFrame {
 		rightSouth.add(save, BorderLayout.EAST);
 		right.setBorder(BorderFactory.createLineBorder(Color.black));
 
-		// ************** create Jpanel bottom with text output
+		/**
+		 *  create Jpanel bottom with text output
+		 */
 		JPanel bottom = new JPanel();
 		bottom.add(new JTextArea("jlkjlkjlkj"));
 		right.setBorder(BorderFactory.createLineBorder(Color.black));
