@@ -5,9 +5,9 @@ import javax.swing.*;
 
 import java.awt.*;
 
-
 import utilities.*;
 import command.*;
+
 import java.util.Vector;
 
 /**
@@ -58,8 +58,23 @@ public class VerwaltungView extends JFrame {
 		
 		
 		//***************** create JPanel center with Programmablauf List and buttons remove, up, down start
-		JPanel center= new JPanel ();		
-		center.add (new JButton("remove"));
+		JPanel center= new JPanel (new BorderLayout());
+		JPanel centerSouth = new JPanel(new GridLayout(1, 2));
+		JPanel centerSouthLeft = new JPanel(new BorderLayout());
+		JPanel centerSouthRight = new JPanel(new GridLayout(1, 3));
+		//*****************  create JButtons
+		JButton remove = new JButton("Remove");
+		JButton up = new JButton("Up");
+		JButton down = new JButton("Down");
+		JButton start = new JButton("Start");
+		//***************** set position of the buttons
+		center.add (centerSouth, BorderLayout.SOUTH);
+		centerSouth.add(centerSouthLeft);
+		centerSouth.add(centerSouthRight);
+		centerSouthLeft.add(remove, BorderLayout.WEST);
+		centerSouthRight.add(up);
+		centerSouthRight.add(down);
+		centerSouthRight.add(start);
 		center.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		
