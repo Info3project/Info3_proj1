@@ -147,15 +147,18 @@ public class Zentralverwaltung implements Interface {
 
 	@Override
 	public String toString() {
-		String result = "Zentralverwaltung: \nPrototypen: \n";
-		for (Prototyp prototyp : prototypen) {
-			result = result + "   " + prototyp + "\n";
-		}
+//		String result = "Zentralverwaltung: \nPrototypen: \n";
+//		for (Prototyp prototyp : prototypen) {
+//			result = result + "   " + prototyp + "\n";
+//		}
+		String result = "";
 		result = result + "Programmablauf: \n";
 		for (Command command : programmablauf) {
 			result = result + "   " + command + "\n";
 		}
 		return result;
 	}
-
+	public Vector<Command> getProgrammablauf() {
+		return programmablauf;
+	}
 }
