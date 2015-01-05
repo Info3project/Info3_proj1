@@ -42,6 +42,11 @@ public abstract class Command implements Serializable
 	{
 		this.name = name;
 	}
+	
+	public String getConfig()
+	{
+		return "";
+	}
 
 	public int getId()
 	{

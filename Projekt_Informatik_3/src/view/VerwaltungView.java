@@ -1,6 +1,7 @@
 package view;
 
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -76,9 +77,35 @@ public class VerwaltungView extends JFrame {
 		/**
 		 * create List mid
 		 */
-		DefaultListModel commands = new DefaultListModel<Command>();
-		JList commandList = new JList(commands);
-		JScrollPane scrollPane1 = new JScrollPane(commandList);
+		//DefaultListModel commands = new DefaultListModel<Command>();
+		//JList commandList = new JList(commands);
+		//JScrollPane scrollPane1 = new JScrollPane(commandList);
+		class MyTableModel extends AbstractTableModel{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+			String[] columnNames ={"No.","Command","Config"};
+			public int getColumnCount() {
+				return columnNames.length;
+			}
+			public int getRowCount(){
+				return zw.getProgrammablauf().size();
+			}
+			public String getColumnName(int col) {
+	            return columnNames[col];
+	        }
+			public Object getValueAt(int row, int col){
+				if (col==0) return (Object) zw.getProgrammablauf().get(row).getStepID();
+				else if (col==1) return (Object) zw.getProgrammablauf().get(row).getName();
+				else /*(col==2)*/ return (Object) zw.getProgrammablauf().get(row).getConfig();
+			}
+		}
+		JTable table = new JTable(new MyTableModel());
+		table.setPreferredScrollableViewportSize(new Dimension(500, 70));
+		table.setFillsViewportHeight(true);
+		
+		
 		
 		
 		/**
@@ -96,13 +123,14 @@ public class VerwaltungView extends JFrame {
 		 * add Buttons, JPanels and set Layout of the center buttons
 		 */
 		center.add(centerSouth, BorderLayout.SOUTH);
+		center.add(centerCenter, BorderLayout.CENTER);
 		centerSouth.add(centerSouthLeft);
 		centerSouth.add(centerSouthRight);
 		centerSouthLeft.add(remove, BorderLayout.WEST);
 		centerSouthRight.add(up);
 		centerSouthRight.add(down);
 		centerSouthRight.add(start);
-		centerCenter.add(scrollPane1, BorderLayout.CENTER);
+		centerCenter.add(new JScrollPane(table), BorderLayout.CENTER);
 		center.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		/**
@@ -111,6 +139,13 @@ public class VerwaltungView extends JFrame {
 		right.add(rightSouth, BorderLayout.SOUTH);
 		rightSouth.add(save, BorderLayout.EAST);
 		right.setBorder(BorderFactory.createLineBorder(Color.black));
+		
+		/**
+		 * set Layout bottom side
+		 */
+		JTextArea output = new JTextArea("Welcome to our wonderfully charming program ;) \n",8,70);
+		output.setEditable(false);
+		bottom.add( new JScrollPane(output), BorderLayout.CENTER);
 		
 		/**
 		 * set Layout of JFrame
@@ -136,8 +171,13 @@ public class VerwaltungView extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				zw.addStep((Prototyp) prototypList.getSelectedValue());
-				// TODO Auto-generated method stub
+				if (prototypList.isSelectionEmpty()){
+					output.append("you need to select a prototype to be added to Commands list \n");
+				}else{
+					output.append("added "+prototypList.getSelectedValue()+" to Commands list \n");
+					table.updateUI();
+					zw.addStep((Prototyp) prototypList.getSelectedValue());
+				}
 
 			}
 		});
@@ -182,6 +222,7 @@ public class VerwaltungView extends JFrame {
 
 	public static void main(String[] args) {
 		Zentralverwaltung zw = Zentralverwaltung.getInstance();
+		zw.addStep(zw.getPrototypes().get(2)); // nur zu Testzwecken..
 		VerwaltungView vv = new VerwaltungView(zw);
 		// vv.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// vv.pack();
