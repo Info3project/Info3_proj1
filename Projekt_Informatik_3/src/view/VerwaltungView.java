@@ -194,6 +194,8 @@ public class VerwaltungView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				zw.removeStep(table.getSelectedRow());
+				table.updateUI();
 
 			}
 		});
@@ -202,7 +204,8 @@ public class VerwaltungView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-
+				zw.incOrder(table.getSelectedRow());
+				table.updateUI();
 			}
 		});
 		down.addActionListener(new ActionListener() {
@@ -210,7 +213,8 @@ public class VerwaltungView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-
+				zw.decOrder(table.getSelectedRow());
+				table.updateUI();
 			}
 		});
 		start.addActionListener(new ActionListener() {

@@ -73,6 +73,7 @@ public class Zentralverwaltung implements Interface {
 				it.remove();
 			}
 		}
+		newStepID();
 	}
 
 	/**
@@ -95,6 +96,7 @@ public class Zentralverwaltung implements Interface {
 
 			index++;
 		}
+		newStepID();
 		return true;
 
 	}
@@ -116,7 +118,7 @@ public class Zentralverwaltung implements Interface {
 					Command temp = programmablauf.get(index + 1);
 					programmablauf.set(index + 1, programmablauf.get(index));
 					programmablauf.set(index, temp);
-
+					newStepID();
 					return true;
 				}
 			}
@@ -160,5 +162,16 @@ public class Zentralverwaltung implements Interface {
 	}
 	public Vector<Command> getProgrammablauf() {
 		return programmablauf;
+	}
+	
+	/**
+	 * Nummeriert neu
+	 */
+	public void newStepID(){
+		int newStep = 0;
+		for (Command command : programmablauf){
+			command.setStepID(newStep);
+			newStep++;
+		}
 	}
 }
