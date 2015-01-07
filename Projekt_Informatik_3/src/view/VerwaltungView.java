@@ -103,6 +103,10 @@ public class VerwaltungView extends JFrame {
 		}
 		JTable table = new JTable(new MyTableModel());
 		table.setPreferredScrollableViewportSize(new Dimension(500, 70));
+		//table.setRowSelectionAllowed(true);
+		//table.setColumnSelectionAllowed(false);
+		//table.setCellSelectionEnabled(false);
+		
 		table.setFillsViewportHeight(true);
 		
 		
@@ -214,7 +218,7 @@ public class VerwaltungView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				bottom.add(new JTextArea(zw.toString()));
+				output.append(zw.toString()+"\n");
 			}
 		});
 				
@@ -222,7 +226,6 @@ public class VerwaltungView extends JFrame {
 
 	public static void main(String[] args) {
 		Zentralverwaltung zw = Zentralverwaltung.getInstance();
-		zw.addStep(zw.getPrototypes().get(2)); // nur zu Testzwecken..
 		VerwaltungView vv = new VerwaltungView(zw);
 		// vv.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// vv.pack();
