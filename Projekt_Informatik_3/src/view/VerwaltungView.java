@@ -119,7 +119,7 @@ public class VerwaltungView extends JFrame {
 		left.add(new JScrollPane(prototypList), BorderLayout.CENTER);
 		left.add(leftSouth, BorderLayout.PAGE_END);
 		left.add(leftNorth, BorderLayout.PAGE_START);
-		leftNorth.add(new JTextArea("Prototypes"));
+		leftNorth.add(new JLabel("Prototypes"));
 		leftSouth.add(add, BorderLayout.EAST);
 		left.setBorder(BorderFactory.createLineBorder(Color.black));
 		
