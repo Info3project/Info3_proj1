@@ -2,6 +2,8 @@ package view;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +18,7 @@ import java.util.Vector;
  * @author Haid/Kopp
  *
  */
-public class VerwaltungView extends JFrame {
+public class VerwaltungView extends JFrame{
 	/**
 	 * 
 	 */
@@ -44,6 +46,20 @@ public class VerwaltungView extends JFrame {
 		 */
 		JPanel right = new JPanel(new BorderLayout());
 		JPanel rightSouth = new JPanel(new BorderLayout());
+		JPanel rightCenter = new JPanel();
+		
+		//TODO: Create JPanels for all types of Commands 
+		JPanel rightDirection = new JPanel(new GridLayout(1,1));
+		rightDirection.add(new JLabel("Grad: "));
+		rightDirection.add(new TextField());
+		
+		JPanel rightGear = new JPanel(new GridLayout(2,1));
+		rightGear.add(new JLabel("Speed: "));
+		rightGear.add(new TextField());
+		rightGear.add(new JLabel("Duration: "));
+		rightGear.add(new TextField());
+		
+		
 		
 		/**
 		 * create JPanel bottom
@@ -112,6 +128,8 @@ public class VerwaltungView extends JFrame {
 		
 		
 		
+		
+		
 		/**
 		 * add Buttons, JPanels and set Layout left side
 		 */
@@ -141,6 +159,7 @@ public class VerwaltungView extends JFrame {
 		 * add Buttons, JPanels and set Layout right side
 		 */
 		right.add(rightSouth, BorderLayout.SOUTH);
+		right.add(rightCenter, BorderLayout.CENTER);
 		rightSouth.add(save, BorderLayout.EAST);
 		right.setBorder(BorderFactory.createLineBorder(Color.black));
 		
@@ -225,6 +244,30 @@ public class VerwaltungView extends JFrame {
 				output.append(zw.toString()+"\n");
 			}
 		});
+		
+		table.getSelectionModel().addListSelectionListener( new ListSelectionListener() {
+	        public void valueChanged(ListSelectionEvent event) {
+	            if (event.getValueIsAdjusting()) {
+	                return;
+	            }
+	            //TODO: Add Command-JPanels to switch statement
+	            
+	            rightCenter.removeAll();
+	            switch (zw.getProgrammablauf().get(table.getSelectedRow()).getName()){
+	            case "Gear":
+	            	rightCenter.add(rightGear);
+	            	break;
+	            case "Direction":
+	            	rightCenter.add(rightDirection);
+	            	break;
+	            	
+	            		
+	            }
+	            rightCenter.updateUI();
+	            //System.out.println("new row selected!!");
+	            
+	        }
+	    });
 				
 	}
 
