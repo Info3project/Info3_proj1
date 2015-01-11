@@ -29,12 +29,35 @@ public class VerwaltungView extends JFrame{
 	public VerwaltungView(Zentralverwaltung zw) {
 		super("Verwaltung");
 		this.zw = zw;
-		JFrame total = new JFrame("GridBagLayout");
+		JFrame total = new JFrame("Mega geiles Programm");
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;
 		total.setLayout(gb);
-
+		
+		/**
+		 * create menu
+		 */
+		//Create the menu bar.
+		JMenuBar menuBar = new JMenuBar();
+		JMenu menuFile = new JMenu("File");
+		JMenu menuHelp = new JMenu("Help");
+		
+		JMenuItem menuFileLoad = new JMenuItem("Load File");
+		JMenuItem menuFileSave = new JMenuItem("Save File");
+		menuFile.add(menuFileLoad);
+		menuFile.add(menuFileSave);
+		
+		JMenuItem menuHelpItem = new JMenuItem("Help text of Programmm...");
+		menuHelp.add(menuHelpItem);
+		
+		menuBar.add(menuFile);
+		menuBar.add(menuHelp);
+		total.setJMenuBar(menuBar);
+		
+		
+		
+		
 		/**
 		 * create JPanel left
 		 */
@@ -244,6 +267,30 @@ public class VerwaltungView extends JFrame{
 				output.append(zw.toString()+"\n");
 			}
 		});
+		
+		menuFileLoad.addActionListener( new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				JFileChooser fC = new JFileChooser();
+				fC.showOpenDialog(total);
+				zw.laden(fC.getSelectedFile());
+				table.updateUI();
+				output.append("File loaded... \n");
+				
+				
+			}
+			
+		});
+		menuFileSave.addActionListener( new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fC = new JFileChooser();
+				fC.showSaveDialog(total);
+				zw.speichern(null,fC.getSelectedFile());
+				output.append("File saved... \n");
+			}
+			
+		});
+		
 		
 		table.getSelectionModel().addListSelectionListener( new ListSelectionListener() {
 	        public void valueChanged(ListSelectionEvent event) {

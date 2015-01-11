@@ -1,5 +1,6 @@
 package utilities;
 
+import java.io.File;
 import java.util.Properties;
 import java.util.Vector;
 import java.util.Iterator;
@@ -138,6 +139,10 @@ public class Zentralverwaltung implements Interface {
 
 		return null;
 	}
+	
+	public Properties laden (File verzeichnis){
+		 return laden(verzeichnis.toString());
+	}
 
 	public void speichern(Properties daten, String verzeichnis) {
 		daten = new Properties();
@@ -145,6 +150,9 @@ public class Zentralverwaltung implements Interface {
 		daten.put("prototypen", prototypen);
 		Serialisieren ser = new Serialisieren();
 		ser.speichern(daten, verzeichnis);
+	}
+	public void speichern (Properties daten, File verzeichnis){
+		speichern(daten,verzeichnis.toString());
 	}
 
 	@Override
