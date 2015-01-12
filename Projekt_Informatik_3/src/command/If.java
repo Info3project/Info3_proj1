@@ -67,6 +67,9 @@ public class If extends Goto {
 	@Override
 	public String toString() {
 		return "If         [treshold=" + treshold + ", reference=" + reference + " " + super.toString() + "]";
+	}	
+	public String getConfig(){
+		Boolean Reference = reference;
+		return "Reference: "+Reference.toString();
 	}
-
 }

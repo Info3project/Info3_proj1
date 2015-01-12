@@ -42,5 +42,8 @@ public class Direction extends Movement
 	public String toString() {
 		return "Direction  [degree=" + degree + " " + super.toString() + "]";
 	}
-
+	public String getConfig(){
+		Integer Degree = this.getDegree();
+		return "Degree: "+Degree.toString();
+	}
 }

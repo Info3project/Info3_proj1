@@ -58,6 +58,9 @@ public abstract class Movement extends Command
 	{
 		return "Movement [hwAdress=" + hwAdress	+" "+ super.toString() + "]";
 	}
-	
+	public String getConfig(){
+		Integer HwAdress = this.getHwAdress();
+		return "hwAdress: "+HwAdress.toString();
+	}
 	
 }

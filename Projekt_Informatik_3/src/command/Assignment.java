@@ -60,6 +60,9 @@ public class Assignment extends Control
 	public String toString() {
 		return "Assignment [operand=" + operand + " " + super.toString() + "]";
 	}
+	public String getConfig(){
+		return "Operand: "+ this.getOperand();
+	}
 
 	
 }

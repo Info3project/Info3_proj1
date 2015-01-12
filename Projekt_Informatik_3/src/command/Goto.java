@@ -50,5 +50,9 @@ public class Goto extends Control {
 	public String toString() {
 		return "Goto       [jumpAdress=" + jumpAdress + " " + super.toString() + "]";
 	}
+	public String getConfig(){
+		Integer JumpAdress = this.getJumpAdress();
+		return "Jump Adress: "+JumpAdress.toString();
+	}
 
 }

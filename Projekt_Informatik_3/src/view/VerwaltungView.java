@@ -74,13 +74,32 @@ public class VerwaltungView extends JFrame{
 		//TODO: Create JPanels for all types of Commands 
 		JPanel rightDirection = new JPanel(new GridLayout(1,1));
 		rightDirection.add(new JLabel("Grad: "));
-		rightDirection.add(new TextField());
+		JTextField grad = new JTextField();
+		rightDirection.add(grad);
 		
 		JPanel rightGear = new JPanel(new GridLayout(2,1));
 		rightGear.add(new JLabel("Speed: "));
-		rightGear.add(new TextField());
+		JTextField speed = new JTextField();
+		rightGear.add(speed);
 		rightGear.add(new JLabel("Duration: "));
-		rightGear.add(new TextField());
+		JTextField duration = new JTextField();
+		rightGear.add(duration);
+		
+		JPanel rightGoto = new JPanel(new GridLayout(1,1));
+		rightGoto.add(new JLabel("Jump Adress: "));
+		JTextField jumpAdress = new JTextField();
+		rightGoto.add(jumpAdress);
+		
+		JPanel rightIf = new JPanel(new GridLayout(1,1));
+		JTextField reference = new JTextField();
+		reference.setEditable(false);
+		rightIf.add(new JLabel("Reference: "));
+		rightIf.add(reference);
+		
+		JPanel rightAssignment = new JPanel(new GridLayout(1,1));
+		rightAssignment.add(new JLabel("Operand: "));
+		JTextField operand = new JTextField();
+		rightAssignment.add(operand);
 		
 		
 		
@@ -105,7 +124,7 @@ public class VerwaltungView extends JFrame{
 		JButton up = new JButton("Up");
 		JButton down = new JButton("Down");
 		JButton start = new JButton("Start");
-		JButton save = new JButton("Save");
+		//JButton save = new JButton("Save");
 		JButton add = new JButton("add");
 		
 		/**
@@ -183,7 +202,7 @@ public class VerwaltungView extends JFrame{
 		 */
 		right.add(rightSouth, BorderLayout.SOUTH);
 		right.add(rightCenter, BorderLayout.CENTER);
-		rightSouth.add(save, BorderLayout.EAST);
+		rightSouth.add(new JLabel("Bitte geben Sie die Daten ein und drücken Sie Enter"));
 		right.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		/**
@@ -246,8 +265,10 @@ public class VerwaltungView extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				zw.incOrder(table.getSelectedRow());
+				int i = table.getSelectedRow();
+				zw.incOrder(i);
 				table.updateUI();
+				table.changeSelection(--i, 1, false, false);
 			}
 		});
 		down.addActionListener(new ActionListener() {
@@ -255,8 +276,10 @@ public class VerwaltungView extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				zw.decOrder(table.getSelectedRow());
+				int i = table.getSelectedRow();
+				zw.decOrder(i);
 				table.updateUI();
+				table.changeSelection(++i, 1, false, false);
 			}
 		});
 		start.addActionListener(new ActionListener() {
@@ -267,7 +290,86 @@ public class VerwaltungView extends JFrame{
 				output.append(zw.toString()+"\n");
 			}
 		});
-		
+		grad.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					Direction bla = (Direction) zw.getProgrammablauf().get(table.getSelectedRow());
+					int degreeZahl = Integer.parseInt(e.getActionCommand());
+					bla.setDegree(degreeZahl);
+					table.updateUI();
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					//e1.printStackTrace();
+				}
+			}
+		});
+		speed.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					Gear bla = (Gear)zw.getProgrammablauf().get(table.getSelectedRow());
+					int speedZahl = Integer.parseInt(e.getActionCommand());
+					bla.setSpeed(speedZahl);
+					table.updateUI();
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					//e1.printStackTrace();
+				}
+				
+			}
+		});
+		duration.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					Gear bla = (Gear)zw.getProgrammablauf().get(table.getSelectedRow());
+					int durationZahl = Integer.parseInt(e.getActionCommand());
+					bla.setDuration(durationZahl);
+					table.updateUI();
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					//e1.printStackTrace();
+				}
+			}
+		});
+		jumpAdress.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					Goto bla = (Goto)zw.getProgrammablauf().get(table.getSelectedRow());
+					int adressZahl = Integer.parseInt(e.getActionCommand());
+					bla.setJumpAdress(adressZahl);
+					table.updateUI();
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					//e1.printStackTrace();
+				}
+			}
+		});
+		operand.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					Assignment bla = (Assignment)zw.getProgrammablauf().get(table.getSelectedRow());
+					bla.setOperand(e.getActionCommand());
+					table.updateUI();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					//e1.printStackTrace();
+				}
+			}
+		});
 		menuFileLoad.addActionListener( new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -306,6 +408,15 @@ public class VerwaltungView extends JFrame{
 	            	break;
 	            case "Direction":
 	            	rightCenter.add(rightDirection);
+	            	break;
+	            case "Goto":
+	            	rightCenter.add(rightGoto);
+	            	break;
+	            case "If":
+	            	rightCenter.add(rightIf);
+	            	break;
+	            case "Assignment":
+	            	rightCenter.add(rightAssignment);
 	            	break;
 	            	
 	            		

@@ -54,5 +54,10 @@ public class Gear extends Movement
 	public String toString() {
 		return "Gear       [speed=" + speed + ", duration=" + duration + " " + super.toString() +  "]";
 	}
+	public String getConfig(){
+		Integer Speed = this.getSpeed();
+		Integer Duration = this.getDuration();
+		return "Speed: "+Speed.toString()+" Duration: "+Duration.toString();
+	}
 
 }
