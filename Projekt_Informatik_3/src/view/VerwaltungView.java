@@ -1,19 +1,44 @@
 package view;
 
-import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.JComponent;
-
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import utilities.*;
-import command.*;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.AbstractTableModel;
 
-import java.util.Vector;
+import utilities.Prototyp;
+import utilities.Zentralverwaltung;
+import command.Assignment;
+import command.Direction;
+import command.Gear;
+import command.Goto;
+import command.If;
 
 /**
  * @author Haid/Kopp
@@ -142,7 +167,6 @@ public class VerwaltungView extends JFrame{
 		 * create JList left
 		 */
 		JList<Prototyp> prototypList = new JList<Prototyp>(zw.getPrototypes());
-		
 		/**
 		 * create List mid
 		 */
@@ -257,7 +281,22 @@ public class VerwaltungView extends JFrame{
 
 			}
 		});
-		
+		prototypList.addKeyListener(new KeyAdapter() {
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					if (prototypList.isSelectionEmpty()){
+						output.append("you need to select a prototype to be added to Commands list \n");
+					}else{
+						output.append("added "+prototypList.getSelectedValue()+" to Commands list \n");
+						table.updateUI();
+						zw.addStep((Prototyp) prototypList.getSelectedValue());
+					}
+			}
+			}
+		});
 		/**
 		 * add Actionlisteners
 		 */
