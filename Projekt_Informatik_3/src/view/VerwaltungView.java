@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -34,6 +33,7 @@ import javax.swing.table.AbstractTableModel;
 
 import utilities.Prototyp;
 import utilities.Zentralverwaltung;
+
 import command.Assignment;
 import command.Direction;
 import command.Gear;
@@ -44,7 +44,7 @@ import command.If;
  * @author Haid/Kopp
  *
  */
-public class VerwaltungView extends JFrame{
+public class VerwaltungView extends JFrame {
 	/**
 	 * 
 	 */
@@ -60,30 +60,27 @@ public class VerwaltungView extends JFrame{
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;
 		total.setLayout(gb);
-		
+
 		/**
 		 * create menu
 		 */
-		//Create the menu bar.
+		// Create the menu bar.
 		JMenuBar menuBar = new JMenuBar();
 		JMenu menuFile = new JMenu("File");
 		JMenu menuHelp = new JMenu("Help");
-		
+
 		JMenuItem menuFileLoad = new JMenuItem("Load File");
 		JMenuItem menuFileSave = new JMenuItem("Save File");
 		menuFile.add(menuFileLoad);
 		menuFile.add(menuFileSave);
-		
+
 		JMenuItem menuHelpItem = new JMenuItem("Help text of Programmm...");
 		menuHelp.add(menuHelpItem);
-		
+
 		menuBar.add(menuFile);
 		menuBar.add(menuHelp);
 		total.setJMenuBar(menuBar);
-		
-		
-		
-		
+
 		/**
 		 * create JPanel left
 		 */
@@ -96,26 +93,29 @@ public class VerwaltungView extends JFrame{
 		JPanel right = new JPanel(new BorderLayout());
 		JPanel rightSouth = new JPanel(new BorderLayout());
 		JPanel rightCenter = new JPanel();
-		
-		//TODO: Create JPanels for all types of Commands 
-		JPanel rightDirection = new JPanel(new GridLayout(1,1));
+
+		// TODO: Create JPanels for all types of Commands
+		JPanel rightDirection = new JPanel(new GridLayout(1, 1));
 		rightDirection.add(new JLabel("Grad: "));
 		JTextField grad = new JTextField();
 		rightDirection.add(grad);
-		
-		JPanel rightGear = new JPanel(new GridLayout(2,1));
+
+		JPanel rightGear = new JPanel(new GridLayout(2, 1));
 		rightGear.add(new JLabel("Speed: "));
 		JTextField speed = new JTextField();
 		rightGear.add(speed);
 		rightGear.add(new JLabel("Duration: "));
 		JTextField duration = new JTextField();
 		rightGear.add(duration);
-		
-		JPanel rightGoto = new JPanel(new GridLayout(1,1));
+
+		JPanel rightGoto = new JPanel(new GridLayout(2, 1));
 		rightGoto.add(new JLabel("Jump Adress: "));
 		JTextField jumpAdress = new JTextField();
 		rightGoto.add(jumpAdress);
-		
+		rightGoto.add(new JLabel("Anzahl Jumps"));
+		JTextField anzahlJumps = new JTextField();
+		rightGoto.add(anzahlJumps);
+
 		JRadioButton ja = new JRadioButton("JA", false);
 		JRadioButton nein = new JRadioButton("NEIN", true);
 		/**
@@ -124,26 +124,24 @@ public class VerwaltungView extends JFrame{
 		ButtonGroup group = new ButtonGroup();
 		group.add(ja);
 		group.add(nein);
-		JPanel rightIf = new JPanel(new GridLayout(2,1));
+		JPanel rightIf = new JPanel(new GridLayout(2, 1));
 		rightIf.add(ja);
 		rightIf.add(nein);
-//		JTextField reference = new JTextField();
-//		reference.setEditable(false);
-//		rightIf.add(new JLabel("Reference: "));
-//		rightIf.add(reference);
-		
-		JPanel rightAssignment = new JPanel(new GridLayout(1,1));
+		// JTextField reference = new JTextField();
+		// reference.setEditable(false);
+		// rightIf.add(new JLabel("Reference: "));
+		// rightIf.add(reference);
+
+		JPanel rightAssignment = new JPanel(new GridLayout(1, 1));
 		rightAssignment.add(new JLabel("Operand: "));
 		JTextField operand = new JTextField();
 		rightAssignment.add(operand);
-		
-		
-		
+
 		/**
 		 * create JPanel bottom
 		 */
 		JPanel bottom = new JPanel();
-		
+
 		/**
 		 * create JPanel center
 		 */
@@ -152,7 +150,7 @@ public class VerwaltungView extends JFrame{
 		JPanel centerSouth = new JPanel(new GridLayout(1, 2));
 		JPanel centerSouthLeft = new JPanel(new BorderLayout());
 		JPanel centerSouthRight = new JPanel(new GridLayout(1, 3));
-		
+
 		/**
 		 * create JButtons
 		 */
@@ -160,9 +158,9 @@ public class VerwaltungView extends JFrame{
 		JButton up = new JButton("Up");
 		JButton down = new JButton("Down");
 		JButton start = new JButton("Start");
-		//JButton save = new JButton("Save");
+		// JButton save = new JButton("Save");
 		JButton add = new JButton("add");
-		
+
 		/**
 		 * create JList left
 		 */
@@ -170,43 +168,46 @@ public class VerwaltungView extends JFrame{
 		/**
 		 * create List mid
 		 */
-		//DefaultListModel commands = new DefaultListModel<Command>();
-		//JList commandList = new JList(commands);
-		//JScrollPane scrollPane1 = new JScrollPane(commandList);
-		class MyTableModel extends AbstractTableModel{
+		// DefaultListModel commands = new DefaultListModel<Command>();
+		// JList commandList = new JList(commands);
+		// JScrollPane scrollPane1 = new JScrollPane(commandList);
+		class MyTableModel extends AbstractTableModel {
 			/**
 			 * 
 			 */
 			private static final long serialVersionUID = 1L;
-			String[] columnNames ={"No.","Command","Config"};
+			String[] columnNames = { "No.", "Command", "Config" };
+
 			public int getColumnCount() {
 				return columnNames.length;
 			}
-			public int getRowCount(){
+
+			public int getRowCount() {
 				return zw.getProgrammablauf().size();
 			}
+
 			public String getColumnName(int col) {
-	            return columnNames[col];
-	        }
-			public Object getValueAt(int row, int col){
-				if (col==0) return (Object) zw.getProgrammablauf().get(row).getStepID();
-				else if (col==1) return (Object) zw.getProgrammablauf().get(row).getName();
-				else /*(col==2)*/ return (Object) zw.getProgrammablauf().get(row).getConfig();
+				return columnNames[col];
+			}
+
+			public Object getValueAt(int row, int col) {
+				if (col == 0)
+					return (Object) zw.getProgrammablauf().get(row).getStepID();
+				else if (col == 1)
+					return (Object) zw.getProgrammablauf().get(row).getName();
+				else
+					/* (col==2) */return (Object) zw.getProgrammablauf()
+							.get(row).getConfig();
 			}
 		}
 		JTable table = new JTable(new MyTableModel());
 		table.setPreferredScrollableViewportSize(new Dimension(500, 70));
-		//table.setRowSelectionAllowed(true);
-		//table.setColumnSelectionAllowed(false);
-		//table.setCellSelectionEnabled(false);
-		
+		// table.setRowSelectionAllowed(true);
+		// table.setColumnSelectionAllowed(false);
+		// table.setCellSelectionEnabled(false);
+
 		table.setFillsViewportHeight(true);
-		
-		
-		
-		
-		
-		
+
 		/**
 		 * add Buttons, JPanels and set Layout left side
 		 */
@@ -217,7 +218,7 @@ public class VerwaltungView extends JFrame{
 		leftNorth.add(new JLabel("Prototypes"));
 		leftSouth.add(add, BorderLayout.EAST);
 		left.setBorder(BorderFactory.createLineBorder(Color.black));
-		
+
 		/**
 		 * add Buttons, JPanels and set Layout of the center buttons
 		 */
@@ -231,22 +232,24 @@ public class VerwaltungView extends JFrame{
 		centerSouthRight.add(start);
 		centerCenter.add(new JScrollPane(table), BorderLayout.CENTER);
 		center.setBorder(BorderFactory.createLineBorder(Color.black));
-		
+
 		/**
 		 * add Buttons, JPanels and set Layout right side
 		 */
 		right.add(rightSouth, BorderLayout.SOUTH);
 		right.add(rightCenter, BorderLayout.CENTER);
-		rightSouth.add(new JLabel("Bitte geben Sie die Daten ein und drücken Sie Enter"));
+		rightSouth.add(new JLabel(
+				"Bitte geben Sie die Daten ein und drücken Sie Enter"));
 		right.setBorder(BorderFactory.createLineBorder(Color.black));
-		
+
 		/**
 		 * set Layout bottom side
 		 */
-		JTextArea output = new JTextArea("Welcome to our wonderfully charming program ;) \n",8,70);
+		JTextArea output = new JTextArea(
+				"Welcome to our wonderfully charming program ;) \n", 8, 70);
 		output.setEditable(false);
-		bottom.add( new JScrollPane(output), BorderLayout.CENTER);
-		
+		bottom.add(new JScrollPane(output), BorderLayout.CENTER);
+
 		/**
 		 * set Layout of JFrame
 		 */
@@ -263,18 +266,19 @@ public class VerwaltungView extends JFrame{
 
 		total.setSize(1000, 500);
 		total.setVisible(true);
-		
+
 		/**
-		 *  ActionListener, creates the selected Prototyp
+		 * ActionListener, creates the selected Prototyp
 		 */
 		add.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (prototypList.isSelectionEmpty()){
+				if (prototypList.isSelectionEmpty()) {
 					output.append("you need to select a prototype to be added to Commands list \n");
-				}else{
-					output.append("added "+prototypList.getSelectedValue()+" to Commands list \n");
+				} else {
+					output.append("added " + prototypList.getSelectedValue()
+							+ " to Commands list \n");
 					table.updateUI();
 					zw.addStep((Prototyp) prototypList.getSelectedValue());
 				}
@@ -282,19 +286,23 @@ public class VerwaltungView extends JFrame{
 			}
 		});
 		prototypList.addKeyListener(new KeyAdapter() {
-			
+
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				if(e.getKeyCode()==KeyEvent.VK_ENTER){
-					if (prototypList.isSelectionEmpty()){
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					if (prototypList.isSelectionEmpty()) {
 						output.append("you need to select a prototype to be added to Commands list \n");
-					}else{
-						output.append("added "+prototypList.getSelectedValue()+" to Commands list \n");
+					} else {
+						output.append("added "
+								+ prototypList.getSelectedValue()
+								+ " to Commands list \n");
+						// Integer i = zw.getProgrammablauf().size();
+						// output.append(i.toString()+"\n");
 						table.updateUI();
 						zw.addStep((Prototyp) prototypList.getSelectedValue());
 					}
-			}
+				}
 			}
 		});
 		/**
@@ -337,86 +345,125 @@ public class VerwaltungView extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				output.append(zw.toString()+"\n");
+				// for (int i = 0; i <= zw.getProgrammablauf().size(); i++)
+				int i = 0;
+				int iEsc = 1;
+				while (i < table.getRowCount()) {
+					output.append(table.getValueAt(i, 1) + " | "
+							+ table.getValueAt(i, 2) + "\n");
+					if (zw.getProgrammablauf().get(i).getName().equals("Goto")) {
+						Goto temp = (Goto) zw.getProgrammablauf().get(i);
+
+						i = temp.getJumpAdress();
+						iEsc++;
+					} else {
+						i++;
+					}
+
+				}
+
+				// output.append(zw.toString()+"\n");
 			}
 		});
 		grad.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
-					Direction bla = (Direction) zw.getProgrammablauf().get(table.getSelectedRow());
+					Direction bla = (Direction) zw.getProgrammablauf().get(
+							table.getSelectedRow());
 					int degreeZahl = Integer.parseInt(e.getActionCommand());
 					bla.setDegree(degreeZahl);
 					table.updateUI();
 				} catch (NumberFormatException e1) {
 					// TODO Auto-generated catch block
-					//e1.printStackTrace();
+					// e1.printStackTrace();
 				}
 			}
 		});
 		speed.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
-					Gear bla = (Gear)zw.getProgrammablauf().get(table.getSelectedRow());
+					Gear bla = (Gear) zw.getProgrammablauf().get(
+							table.getSelectedRow());
 					int speedZahl = Integer.parseInt(e.getActionCommand());
 					bla.setSpeed(speedZahl);
 					table.updateUI();
 				} catch (NumberFormatException e1) {
 					// TODO Auto-generated catch block
-					//e1.printStackTrace();
+					// e1.printStackTrace();
 				}
-				
+
 			}
 		});
 		duration.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
-					Gear bla = (Gear)zw.getProgrammablauf().get(table.getSelectedRow());
+					Gear bla = (Gear) zw.getProgrammablauf().get(
+							table.getSelectedRow());
 					int durationZahl = Integer.parseInt(e.getActionCommand());
 					bla.setDuration(durationZahl);
 					table.updateUI();
 				} catch (NumberFormatException e1) {
 					// TODO Auto-generated catch block
-					//e1.printStackTrace();
+					// e1.printStackTrace();
 				}
 			}
 		});
 		jumpAdress.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
-					Goto bla = (Goto)zw.getProgrammablauf().get(table.getSelectedRow());
+					Goto bla = (Goto) zw.getProgrammablauf().get(
+							table.getSelectedRow());
 					int adressZahl = Integer.parseInt(e.getActionCommand());
 					bla.setJumpAdress(adressZahl);
 					table.updateUI();
 				} catch (NumberFormatException e1) {
 					// TODO Auto-generated catch block
-					//e1.printStackTrace();
+					// e1.printStackTrace();
 				}
 			}
 		});
-		operand.addActionListener(new ActionListener() {
-			
+		anzahlJumps.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
-					Assignment bla = (Assignment)zw.getProgrammablauf().get(table.getSelectedRow());
+					Goto bla = (Goto) zw.getProgrammablauf().get(
+							table.getSelectedRow());
+					int anzahlZahl = Integer.parseInt(e.getActionCommand());
+					bla.setWdh(anzahlZahl);
+					table.updateUI();
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					// e1.printStackTrace();
+				}
+			}
+		});
+		operand.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					Assignment bla = (Assignment) zw.getProgrammablauf().get(
+							table.getSelectedRow());
 					bla.setOperand(e.getActionCommand());
 					table.updateUI();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
-					//e1.printStackTrace();
+					// e1.printStackTrace();
 				}
 			}
 		});
@@ -424,81 +471,82 @@ public class VerwaltungView extends JFrame{
 		 * ActionListener fuer ja/nein
 		 */
 		ja.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				If bla = (If)zw.getProgrammablauf().get(table.getSelectedRow());
+				If bla = (If) zw.getProgrammablauf()
+						.get(table.getSelectedRow());
 				bla.setReference(true);
 				table.updateUI();
 			}
 		});
 		nein.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				If bla = (If)zw.getProgrammablauf().get(table.getSelectedRow());
+				If bla = (If) zw.getProgrammablauf()
+						.get(table.getSelectedRow());
 				bla.setReference(false);
 				table.updateUI();
 			}
 		});
-		menuFileLoad.addActionListener( new ActionListener() {
+		menuFileLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				JFileChooser fC = new JFileChooser();
 				fC.showOpenDialog(total);
 				zw.laden(fC.getSelectedFile());
 				table.updateUI();
 				output.append("File loaded... \n");
-				
-				
+
 			}
-			
+
 		});
-		menuFileSave.addActionListener( new ActionListener() {
+		menuFileSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fC = new JFileChooser();
 				fC.showSaveDialog(total);
-				zw.speichern(null,fC.getSelectedFile());
+				zw.speichern(null, fC.getSelectedFile());
 				output.append("File saved... \n");
 			}
-			
+
 		});
-		
-		
-		table.getSelectionModel().addListSelectionListener( new ListSelectionListener() {
-	        public void valueChanged(ListSelectionEvent event) {
-	            if (event.getValueIsAdjusting()) {
-	                return;
-	            }
-	            //TODO: Add Command-JPanels to switch statement
-	            rightCenter.removeAll();
-	            switch (zw.getProgrammablauf().get(table.getSelectedRow()).getName()){
-	            case "Gear":
-	            	rightCenter.add(rightGear);
-	            	break;
-	            case "Direction":
-	            	rightCenter.add(rightDirection);
-	            	break;
-	            case "Goto":
-	            	rightCenter.add(rightGoto);
-	            	break;
-	            case "If":
-	            	rightCenter.add(rightIf);
-	            	break;
-	            case "Assignment":
-	            	rightCenter.add(rightAssignment);
-	            	break;
-	            	
-	            		
-	            }
-	            rightCenter.updateUI();
-	            //System.out.println("new row selected!!");
-	            
-	        }
-	    });
-				
+
+		table.getSelectionModel().addListSelectionListener(
+				new ListSelectionListener() {
+					public void valueChanged(ListSelectionEvent event) {
+						if (event.getValueIsAdjusting()) {
+							return;
+						}
+						// TODO: Add Command-JPanels to switch statement
+						rightCenter.removeAll();
+						switch (zw.getProgrammablauf()
+								.get(table.getSelectedRow()).getName()) {
+						case "Gear":
+							rightCenter.add(rightGear);
+							break;
+						case "Direction":
+							rightCenter.add(rightDirection);
+							break;
+						case "Goto":
+							rightCenter.add(rightGoto);
+							break;
+						case "If":
+							rightCenter.add(rightIf);
+							break;
+						case "Assignment":
+							rightCenter.add(rightAssignment);
+							break;
+
+						}
+						rightCenter.updateUI();
+						// System.out.println("new row selected!!");
+
+					}
+				});
+
 	}
 
 	public static void main(String[] args) {

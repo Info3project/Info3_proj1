@@ -14,6 +14,7 @@ public class Goto extends Control {
 	 */
 	private static final long serialVersionUID = 1L;
 	private int jumpAdress;
+	private int wdh;
 
 	public Goto(String name) {
 		super(name, 3);
@@ -52,7 +53,16 @@ public class Goto extends Control {
 	}
 	public String getConfig(){
 		Integer JumpAdress = this.getJumpAdress();
-		return "Jump Adress: "+JumpAdress.toString();
+		Integer Wdh = this.getWdh();
+		return "Jump Adress: "+JumpAdress.toString()+" "+"Anzahl Jumps: "+Wdh.toString();
+	}
+
+	public int getWdh() {
+		return wdh;
+	}
+
+	public void setWdh(int wdh) {
+		this.wdh = wdh;
 	}
 
 }
