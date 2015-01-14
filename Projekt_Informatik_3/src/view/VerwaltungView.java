@@ -344,20 +344,22 @@ public class VerwaltungView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				int iEsc = 0;
 				int i = 0;
 				while (i < table.getRowCount()) {
 					output.append(table.getValueAt(i, 1) + " | "
 							+ table.getValueAt(i, 2) + "\n");
-					try {
-						if (table.getValueAt(i, 1).equals("Goto")) {
-							Goto temp = (Goto) zw.getProgrammablauf().get(i);
+
+					if (table.getValueAt(i, 1).equals("Goto")) {
+						Goto temp = (Goto) zw.getProgrammablauf().get(i);
+						if (iEsc < temp.getWdh()) {
+							Integer iInt = i;
+							output.append(iInt.toString());
 							i = temp.getJumpAdress();
-						} else {
-							i++;
-						}
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+							iEsc++;
+						} else i++;
+					} else {
+						i++;
 					}
 
 				}
