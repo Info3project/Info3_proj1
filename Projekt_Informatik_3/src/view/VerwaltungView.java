@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.JComponent;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -90,11 +91,21 @@ public class VerwaltungView extends JFrame{
 		JTextField jumpAdress = new JTextField();
 		rightGoto.add(jumpAdress);
 		
-		JPanel rightIf = new JPanel(new GridLayout(1,1));
-		JTextField reference = new JTextField();
-		reference.setEditable(false);
-		rightIf.add(new JLabel("Reference: "));
-		rightIf.add(reference);
+		JRadioButton ja = new JRadioButton("JA", false);
+		JRadioButton nein = new JRadioButton("NEIN", true);
+		/**
+		 * GRoup the Radio Buttons
+		 */
+		ButtonGroup group = new ButtonGroup();
+		group.add(ja);
+		group.add(nein);
+		JPanel rightIf = new JPanel(new GridLayout(2,1));
+		rightIf.add(ja);
+		rightIf.add(nein);
+//		JTextField reference = new JTextField();
+//		reference.setEditable(false);
+//		rightIf.add(new JLabel("Reference: "));
+//		rightIf.add(reference);
 		
 		JPanel rightAssignment = new JPanel(new GridLayout(1,1));
 		rightAssignment.add(new JLabel("Operand: "));
@@ -370,6 +381,29 @@ public class VerwaltungView extends JFrame{
 				}
 			}
 		});
+		/**
+		 * ActionListener fuer ja/nein
+		 */
+		ja.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				If bla = (If)zw.getProgrammablauf().get(table.getSelectedRow());
+				bla.setReference(true);
+				table.updateUI();
+			}
+		});
+		nein.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				If bla = (If)zw.getProgrammablauf().get(table.getSelectedRow());
+				bla.setReference(false);
+				table.updateUI();
+			}
+		});
 		menuFileLoad.addActionListener( new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -400,7 +434,6 @@ public class VerwaltungView extends JFrame{
 	                return;
 	            }
 	            //TODO: Add Command-JPanels to switch statement
-	            
 	            rightCenter.removeAll();
 	            switch (zw.getProgrammablauf().get(table.getSelectedRow()).getName()){
 	            case "Gear":
