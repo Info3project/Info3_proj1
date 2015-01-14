@@ -33,7 +33,6 @@ import javax.swing.table.AbstractTableModel;
 
 import utilities.Prototyp;
 import utilities.Zentralverwaltung;
-
 import command.Assignment;
 import command.Direction;
 import command.Gear;
@@ -345,19 +344,20 @@ public class VerwaltungView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				// for (int i = 0; i <= zw.getProgrammablauf().size(); i++)
 				int i = 0;
-				int iEsc = 1;
 				while (i < table.getRowCount()) {
 					output.append(table.getValueAt(i, 1) + " | "
 							+ table.getValueAt(i, 2) + "\n");
-					if (zw.getProgrammablauf().get(i).getName().equals("Goto")) {
-						Goto temp = (Goto) zw.getProgrammablauf().get(i);
-
-						i = temp.getJumpAdress();
-						iEsc++;
-					} else {
-						i++;
+					try {
+						if (table.getValueAt(i, 1).equals("Goto")) {
+							Goto temp = (Goto) zw.getProgrammablauf().get(i);
+							i = temp.getJumpAdress();
+						} else {
+							i++;
+						}
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
 
 				}
