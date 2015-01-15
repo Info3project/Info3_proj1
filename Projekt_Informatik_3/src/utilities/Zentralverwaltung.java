@@ -136,6 +136,7 @@ public class Zentralverwaltung implements Interface {
 		daten = ser.laden(verzeichnis);
 		prototypen = (Vector<Prototyp>) daten.get("prototypen");
 		programmablauf = (Vector<Command>) daten.get("commands");
+		step=programmablauf.size();
 
 		return null;
 	}
